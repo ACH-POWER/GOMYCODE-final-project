@@ -24,10 +24,6 @@ app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID);
 });
 
-// ERROR HANDLER
-app.use(notFound);
-app.use(errorHandler);
-
 const PORT = process.env.PORT || 4000;
 
 // serve static pages
@@ -38,6 +34,10 @@ app.use("/admin/*", express.static(path.join(__dirname, ADMIN_BUILD)));
 const CLIENT_BUILD = "../client/build";
 app.use("/", express.static(path.join(__dirname, CLIENT_BUILD)));
 app.use("/*", express.static(path.join(__dirname, CLIENT_BUILD)));
+
+// ERROR HANDLER
+app.use(notFound);
+app.use(errorHandler);
 
 // listen to server
 app.listen(PORT, console.log(`server run in port ${PORT}`));

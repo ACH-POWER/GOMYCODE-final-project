@@ -25,7 +25,7 @@ import { defaultLanguage } from "./constants";
 const App = () => {
   const [lang, setLang] = useState(defaultLanguage);
   return (
-    <Router>
+    <Router basename="/">
       <LanguageContext.Provider value={{ lang, setLang }}>
         <IntlProvider
           messages={getMessages(lang)}
